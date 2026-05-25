@@ -6,14 +6,7 @@ const emit = defineEmits<{ (e: 'remove'): void }>()
 </script>
 
 <template>
-  <tr :class="item.checked ? 'opacity-50' : ''" class="border-b border-secondary last:border-0">
-    <td class="w-8 py-2 align-middle text-center">
-      <input
-        v-model="item.checked"
-        type="checkbox"
-        class="h-5 w-5 accent-primary"
-      />
-    </td>
+  <tr class="border-b border-secondary last:border-0">
     <td class="py-2 pr-1 align-middle w-[100px]">
       <input
         v-model="item.date"
@@ -27,7 +20,6 @@ const emit = defineEmits<{ (e: 'remove'): void }>()
         type="text"
         placeholder="Expense"
         class="w-full min-h-[36px] rounded-md border border-transparent bg-white px-2 text-sm focus:border-secondary focus:bg-white outline-none"
-        :class="item.checked ? 'line-through' : ''"
       />
     </td>
     <td class="py-2 pr-1 align-middle w-[110px]">

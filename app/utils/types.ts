@@ -18,7 +18,6 @@ export interface SpendingEntry {
   expense: string
   category: string
   cost: number
-  checked: boolean
 }
 
 export interface SpendingCategory {
