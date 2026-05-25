@@ -74,6 +74,54 @@ function removeCategory(id: string) {
 
     <section class="space-y-3">
       <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold">Categories</h2>
+        <button
+          type="button"
+          class="min-h-[44px] rounded-lg bg-primary text-white px-4 font-semibold"
+          @click="openCategory"
+        >
+          + Category
+        </button>
+      </div>
+
+      <div class="rounded-lg bg-white border border-secondary overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-secondary/20">
+            <tr>
+              <th class="w-8 py-2"></th>
+              <th class="py-2 text-left pl-2">Category</th>
+              <th class="py-2 text-right pr-1">Budget</th>
+              <th class="py-2 text-right pr-1">Actual</th>
+              <th class="w-8 py-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <CategoryRow
+              v-for="c in categories"
+              :key="c.id"
+              :item="c"
+              @remove="removeCategory(c.id)"
+            />
+            <tr v-if="categories.length === 0">
+              <td colspan="5" class="py-6 text-center text-xs text-slate-400">
+                No categories yet.
+              </td>
+            </tr>
+          </tbody>
+          <tfoot v-if="categories.length" class="bg-secondary/20 font-semibold text-sm">
+            <tr>
+              <td colspan="2" class="py-2 pl-2 text-slate-600">Total</td>
+              <td class="py-2 text-right pr-1">{{ formatEUR(totalCatBudgeted) }}</td>
+              <td class="py-2 text-right pr-1">{{ formatEUR(spending) }}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
         <h1 class="text-xl font-semibold">Spending</h1>
         <button
           type="button"
@@ -121,53 +169,7 @@ function removeCategory(id: string) {
       </div>
     </section>
 
-    <section class="space-y-3">
-      <div class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold">Categories</h2>
-        <button
-          type="button"
-          class="min-h-[44px] rounded-lg bg-primary text-white px-4 font-semibold"
-          @click="openCategory"
-        >
-          + Category
-        </button>
-      </div>
-
-      <div class="rounded-lg bg-white border border-secondary overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-secondary/20">
-            <tr>
-              <th class="w-8 py-2"></th>
-              <th class="py-2 text-left pl-2">Category</th>
-              <th class="py-2 text-right pr-1">Budget</th>
-              <th class="py-2 text-right pr-1">Actual</th>
-              <th class="w-8 py-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <CategoryRow
-              v-for="c in categories"
-              :key="c.id"
-              :item="c"
-              @remove="removeCategory(c.id)"
-            />
-            <tr v-if="categories.length === 0">
-              <td colspan="5" class="py-6 text-center text-xs text-slate-400">
-                No categories yet.
-              </td>
-            </tr>
-          </tbody>
-          <tfoot v-if="categories.length" class="bg-secondary/20 font-semibold text-sm">
-            <tr>
-              <td colspan="2" class="py-2 pl-2 text-slate-600">Total</td>
-              <td class="py-2 text-right pr-1">{{ formatEUR(totalCatBudgeted) }}</td>
-              <td class="py-2 text-right pr-1">{{ formatEUR(spending) }}</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </section>
+    
 
     <!-- Add spending entry modal -->
     <div
