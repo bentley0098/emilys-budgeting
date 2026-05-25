@@ -41,16 +41,16 @@ function remove(id: string) {
       <h1 class="text-xl font-semibold">{{ title }}</h1>
       <button
         type="button"
-        class="min-h-[44px] rounded-xl bg-emerald-600 text-white px-4 font-semibold"
+        class="min-h-[44px] rounded-lg bg-primary text-white px-4 font-semibold"
         @click="showAdd = true"
       >
         + Add
       </button>
     </div>
 
-    <div class="rounded-2xl bg-white border border-slate-200 overflow-x-auto">
+    <div class="rounded-lg bg-white border border-secondary overflow-x-auto">
       <table class="w-full text-sm">
-        <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-slate-50">
+        <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-secondary/20">
           <tr>
             <th class="w-8 py-2"></th>
             <th class="py-2 text-left pl-2">Name</th>
@@ -73,7 +73,7 @@ function remove(id: string) {
             </td>
           </tr>
         </tbody>
-        <tfoot v-if="items.length" class="bg-slate-50 font-semibold text-sm">
+        <tfoot v-if="items.length" class="bg-secondary/20 font-semibold text-sm">
           <tr>
             <td colspan="3" class="py-2 pl-2 text-slate-600">Total</td>
             <td class="py-2 text-right pr-1">{{ formatEUR(totalBudgeted) }}</td>

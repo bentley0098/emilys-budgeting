@@ -4,10 +4,10 @@ import { formatEUR } from '~/utils/format'
 const { bills, subscriptions, savings, debts } = usePeriodTotals()
 
 const tiles = [
-  { label: 'Bills', value: bills, color: 'bg-amber-100 text-amber-800' },
-  { label: 'Subs', value: subscriptions, color: 'bg-sky-100 text-sky-800' },
-  { label: 'Savings', value: savings, color: 'bg-emerald-100 text-emerald-800' },
-  { label: 'Debt', value: debts, color: 'bg-rose-100 text-rose-800' },
+  { label: 'Bills', value: bills, color: 'bg-secondary text-slate-700' },
+  { label: 'Subs', value: subscriptions, color: 'bg-tertiary text-slate-700' },
+  { label: 'Savings', value: savings, color: 'bg-fourth text-slate-700' },
+  { label: 'Debt', value: debts, color: 'bg-primary text-slate-700' },
 ]
 </script>
 
@@ -16,7 +16,7 @@ const tiles = [
     <div
       v-for="t in tiles"
       :key="t.label"
-      class="rounded-xl p-2 text-center"
+      class="rounded-lg p-2 text-center"
       :class="t.color"
     >
       <div class="text-[10px] uppercase tracking-wider opacity-70">{{ t.label }}</div>

@@ -77,16 +77,16 @@ function removeCategory(id: string) {
         <h1 class="text-xl font-semibold">Spending</h1>
         <button
           type="button"
-          class="min-h-[44px] rounded-xl bg-emerald-600 text-white px-4 font-semibold"
+          class="min-h-[44px] rounded-lg bg-primary text-white px-4 font-semibold"
           @click="openEntry"
         >
           + Add
         </button>
       </div>
 
-      <div class="rounded-2xl bg-white border border-slate-200 overflow-x-auto">
+      <div class="rounded-lg bg-white border border-secondary overflow-x-auto">
         <table class="w-full text-sm">
-          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-slate-50">
+          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-secondary/20">
             <tr>
               <th class="w-8 py-2"></th>
               <th class="py-2 text-left">Date</th>
@@ -110,7 +110,7 @@ function removeCategory(id: string) {
               </td>
             </tr>
           </tbody>
-          <tfoot v-if="entries.length" class="bg-slate-50 font-semibold text-sm">
+          <tfoot v-if="entries.length" class="bg-secondary/20 font-semibold text-sm">
             <tr>
               <td colspan="4" class="py-2 pl-2 text-slate-600">Total</td>
               <td class="py-2 text-right pr-1">{{ formatEUR(spending) }}</td>
@@ -126,16 +126,16 @@ function removeCategory(id: string) {
         <h2 class="text-lg font-semibold">Categories</h2>
         <button
           type="button"
-          class="min-h-[44px] rounded-xl bg-slate-900 text-white px-4 font-semibold"
+          class="min-h-[44px] rounded-lg bg-primary text-white px-4 font-semibold"
           @click="openCategory"
         >
           + Category
         </button>
       </div>
 
-      <div class="rounded-2xl bg-white border border-slate-200 overflow-x-auto">
+      <div class="rounded-lg bg-white border border-secondary overflow-x-auto">
         <table class="w-full text-sm">
-          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-slate-50">
+          <thead class="text-[10px] uppercase tracking-wider text-slate-500 bg-secondary/20">
             <tr>
               <th class="w-8 py-2"></th>
               <th class="py-2 text-left pl-2">Category</th>
@@ -157,7 +157,7 @@ function removeCategory(id: string) {
               </td>
             </tr>
           </tbody>
-          <tfoot v-if="categories.length" class="bg-slate-50 font-semibold text-sm">
+          <tfoot v-if="categories.length" class="bg-secondary/20 font-semibold text-sm">
             <tr>
               <td colspan="2" class="py-2 pl-2 text-slate-600">Total</td>
               <td class="py-2 text-right pr-1">{{ formatEUR(totalCatBudgeted) }}</td>
@@ -172,15 +172,15 @@ function removeCategory(id: string) {
     <!-- Add spending entry modal -->
     <div
       v-if="showEntry"
-      class="fixed inset-0 z-50 bg-slate-900/60 flex items-end sm:items-center justify-center"
+      class="fixed inset-0 z-50 bg-primary/40 flex items-end sm:items-center justify-center"
       @click.self="showEntry = false"
     >
-      <div class="w-full max-w-[430px] bg-white rounded-t-2xl sm:rounded-2xl p-5 space-y-4">
+      <div class="w-full max-w-[430px] bg-white rounded-t-lg sm:rounded-lg p-5 space-y-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold">New spending entry</h2>
           <button
             type="button"
-            class="min-h-[44px] min-w-[44px] rounded-full text-slate-500 text-2xl"
+            class="min-h-[44px] min-w-[44px] rounded-lg text-slate-500 text-2xl"
             @click="showEntry = false"
           >
             ×
@@ -192,7 +192,7 @@ function removeCategory(id: string) {
           <input
             v-model="newEntry.date"
             type="date"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
@@ -201,7 +201,7 @@ function removeCategory(id: string) {
           <input
             v-model="newEntry.expense"
             type="text"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
@@ -210,7 +210,7 @@ function removeCategory(id: string) {
           <input
             v-model="newEntry.category"
             list="spending-categories"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
@@ -221,21 +221,21 @@ function removeCategory(id: string) {
             type="number"
             step="0.01"
             inputmode="decimal"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
         <div class="flex gap-2 pt-2">
           <button
             type="button"
-            class="flex-1 min-h-[44px] rounded-xl bg-slate-200 text-slate-700 font-medium"
+            class="flex-1 min-h-[44px] rounded-lg bg-secondary text-slate-700 font-medium"
             @click="showEntry = false"
           >
             Cancel
           </button>
           <button
             type="button"
-            class="flex-1 min-h-[44px] rounded-xl bg-emerald-600 text-white font-semibold"
+            class="flex-1 min-h-[44px] rounded-lg bg-primary text-white font-semibold"
             @click="saveEntry"
           >
             Add
@@ -247,15 +247,15 @@ function removeCategory(id: string) {
     <!-- Add category modal -->
     <div
       v-if="showCategory"
-      class="fixed inset-0 z-50 bg-slate-900/60 flex items-end sm:items-center justify-center"
+      class="fixed inset-0 z-50 bg-primary/40 flex items-end sm:items-center justify-center"
       @click.self="showCategory = false"
     >
-      <div class="w-full max-w-[430px] bg-white rounded-t-2xl sm:rounded-2xl p-5 space-y-4">
+      <div class="w-full max-w-[430px] bg-white rounded-t-lg sm:rounded-lg p-5 space-y-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold">New category</h2>
           <button
             type="button"
-            class="min-h-[44px] min-w-[44px] rounded-full text-slate-500 text-2xl"
+            class="min-h-[44px] min-w-[44px] rounded-lg text-slate-500 text-2xl"
             @click="showCategory = false"
           >
             ×
@@ -267,7 +267,7 @@ function removeCategory(id: string) {
           <input
             v-model="newCategory.name"
             type="text"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
@@ -278,21 +278,21 @@ function removeCategory(id: string) {
             type="number"
             step="0.01"
             inputmode="decimal"
-            class="mt-1 block w-full min-h-[44px] rounded-lg border border-slate-300 px-3"
+            class="mt-1 block w-full min-h-[44px] rounded-lg border border-secondary px-3"
           />
         </label>
 
         <div class="flex gap-2 pt-2">
           <button
             type="button"
-            class="flex-1 min-h-[44px] rounded-xl bg-slate-200 text-slate-700 font-medium"
+            class="flex-1 min-h-[44px] rounded-lg bg-secondary text-slate-700 font-medium"
             @click="showCategory = false"
           >
             Cancel
           </button>
           <button
             type="button"
-            class="flex-1 min-h-[44px] rounded-xl bg-slate-900 text-white font-semibold"
+            class="flex-1 min-h-[44px] rounded-lg bg-primary text-white font-semibold"
             @click="saveCategory"
           >
             Add

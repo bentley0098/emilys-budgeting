@@ -18,19 +18,19 @@ function pick(payDate: string) {
     <div class="flex items-stretch gap-2">
       <button
         type="button"
-        class="flex-1 min-h-[44px] rounded-xl bg-slate-900 text-white px-4 py-2 text-left"
+        class="flex-1 min-h-[44px] rounded-lg bg-primary text-white px-4 py-2 text-left"
         @click="open = !open"
       >
-        <div class="text-[10px] uppercase tracking-wider text-slate-300">Pay period</div>
+        <div class="text-[10px] uppercase tracking-wider text-white/70">Pay period</div>
         <div class="text-sm font-semibold">
           {{ active ? formatDateShort(active.payDate) : '—' }}
-          <span class="text-slate-400">→</span>
+          <span class="text-white/60">→</span>
           {{ active ? formatDateShort(active.nextPayDate) : '—' }}
         </div>
       </button>
       <button
         type="button"
-        class="min-h-[44px] min-w-[44px] rounded-xl bg-emerald-600 text-white text-xl font-bold"
+        class="min-h-[44px] min-w-[44px] rounded-lg bg-primary text-white text-xl font-bold"
         aria-label="New pay period"
         @click="emit('new-period')"
       >
@@ -38,7 +38,7 @@ function pick(payDate: string) {
       </button>
       <button
         type="button"
-        class="min-h-[44px] min-w-[44px] rounded-xl bg-slate-200 text-slate-700 text-base"
+        class="min-h-[44px] min-w-[44px] rounded-lg bg-secondary text-slate-700 text-base"
         aria-label="Export JSON"
         @click="exportActive"
       >
@@ -48,14 +48,14 @@ function pick(payDate: string) {
 
     <div
       v-if="open"
-      class="absolute z-30 mt-2 w-full rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden"
+      class="absolute z-30 mt-2 w-full rounded-lg border border-secondary bg-white shadow-lg overflow-hidden"
     >
       <button
         v-for="p in allPeriods"
         :key="p.payDate"
         type="button"
-        class="w-full text-left px-4 py-3 min-h-[44px] hover:bg-slate-50 flex justify-between items-center"
-        :class="active && p.payDate === active.payDate ? 'bg-emerald-50 text-emerald-700 font-semibold' : ''"
+        class="w-full text-left px-4 py-3 min-h-[44px] hover:bg-secondary/30 flex justify-between items-center"
+        :class="active && p.payDate === active.payDate ? 'bg-fourth/50 text-slate-700 font-semibold' : ''"
         @click="pick(p.payDate)"
       >
         <span>{{ formatDateShort(p.payDate) }}</span>

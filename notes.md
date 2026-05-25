@@ -1,0 +1,2 @@
+[ ] Should be focused on budgeting payslip, not 'in account' then upon adding a new payslip, ignore leftover, keep track but every paylsip should start form 0
+[ ] 

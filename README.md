@@ -1,75 +1,33 @@
-# Nuxt Minimal Starter
+# Budgeting App
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A mobile-first monthly budget tracker built with Nuxt 4 and Vue 3. All data is stored in `localStorage` — no backend or account required.
+
+## Features
+
+- Track spending by category with budget targets
+- Manage fixed expenses: bills, subscriptions, savings goals, and debt payments
+- Dashboard summary showing amount left to budget and left to spend
+- Expense breakdown chart (Chart.js)
+- Multi-period support — switch between pay periods without losing history
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Development
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+npm run dev      # http://localhost:3000
+npm run build    # Production build
+npm run preview  # Preview production build locally
+npm run generate # Static site generation
 ```
 
-## Production
+## Stack
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [Nuxt 4](https://nuxt.com) + Vue 3 (SPA, SSR disabled)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- [Chart.js 4](https://www.chartjs.org)
+- `localStorage` for persistence (no backend)

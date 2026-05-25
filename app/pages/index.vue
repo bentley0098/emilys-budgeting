@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import IconsSpend from '~/components/icons/Spend.vue'
+import IconsBills from '~/components/icons/Bills.vue'
+import IconsSubscriptions from '~/components/icons/Subscriptions.vue'
+import IconsSavings from '~/components/icons/Savings.vue'
+import IconsDebt from '~/components/icons/Debt.vue'
 
 const { active } = usePayPeriods()
 const showNewPeriod = ref(false)
 
 const quickLinks = [
-  { to: '/spending', label: 'Spending', icon: '🛒', color: 'bg-violet-100 text-violet-800' },
-  { to: '/bills', label: 'Bills', icon: '📄', color: 'bg-amber-100 text-amber-800' },
-  { to: '/subscriptions', label: 'Subscriptions', icon: '🔁', color: 'bg-sky-100 text-sky-800' },
-  { to: '/savings', label: 'Savings', icon: '🐖', color: 'bg-emerald-100 text-emerald-800' },
-  { to: '/debt', label: 'Debt', icon: '💳', color: 'bg-rose-100 text-rose-800' },
+  { to: '/spending', label: 'Spending', icon: IconsSpend, color: 'bg-primary text-slate-700' },
+  { to: '/bills', label: 'Bills', icon: IconsBills, color: 'bg-secondary text-slate-700' },
+  { to: '/subscriptions', label: 'Subscriptions', icon: IconsSubscriptions, color: 'bg-tertiary text-slate-700' },
+  { to: '/savings', label: 'Savings', icon: IconsSavings, color: 'bg-fourth text-slate-700' },
+  { to: '/debt', label: 'Debt', icon: IconsDebt, color: 'bg-primary text-slate-700' },
 ]
 </script>
 
@@ -30,10 +35,10 @@ const quickLinks = [
             v-for="l in quickLinks"
             :key="l.to"
             :to="l.to"
-            class="rounded-xl p-3 text-center min-h-[72px] flex flex-col items-center justify-center"
+            class="rounded-lg p-3 text-center min-h-[72px] flex flex-col items-center justify-center"
             :class="l.color"
           >
-            <div class="text-xl">{{ l.icon }}</div>
+            <component :is="l.icon" class="w-6 h-6" />
             <div class="text-[11px] font-medium mt-1">{{ l.label }}</div>
           </NuxtLink>
         </div>

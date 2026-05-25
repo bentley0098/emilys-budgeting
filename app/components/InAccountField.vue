@@ -15,7 +15,7 @@ const value = computed({
 </script>
 
 <template>
-  <div class="rounded-2xl bg-emerald-600 text-white p-5 text-center">
+  <div class="rounded-lg bg-primary text-white p-5 text-center">
     <div class="text-xs uppercase tracking-wider opacity-80">In account</div>
     <div class="mt-2 flex items-center justify-center gap-1">
       <span class="text-2xl font-semibold opacity-80">€</span>

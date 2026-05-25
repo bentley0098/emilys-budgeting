@@ -17,8 +17,8 @@ const canvas = ref<HTMLCanvasElement | null>(null)
 let chart: Chart | null = null
 
 const palette = [
-  '#10b981', '#0ea5e9', '#f59e0b', '#ef4444', '#8b5cf6',
-  '#ec4899', '#14b8a6', '#f97316', '#6366f1', '#84cc16',
+  '#f0a6d2', '#c7dbf9', '#dffff2', '#e9d1dd', '#f0a6d2',
+  '#c7dbf9', '#dffff2', '#e9d1dd', '#f0a6d2', '#c7dbf9',
 ]
 
 function buildData() {
@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="rounded-2xl bg-white border border-slate-200 p-4">
+  <div class="rounded-lg bg-white border border-secondary p-4">
     <div class="text-sm font-semibold text-slate-800 mb-2">Total expense breakdown</div>
     <div v-if="breakdown.length === 0" class="text-center text-xs text-slate-400 py-8">
       Add some expenses to see the breakdown.
