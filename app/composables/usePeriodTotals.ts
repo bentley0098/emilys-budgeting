@@ -4,6 +4,7 @@ export function usePeriodTotals() {
   const { active } = usePayPeriods()
 
   const sum = (arr: { actual: number }[]) => arr.reduce((t, e) => t + (Number(e.actual) || 0), 0)
+  const sumBudgeted = (arr: { budgeted: number }[]) => arr.reduce((t, e) => t + (Number(e.budgeted) || 0), 0)
 
   const spending = computed(() =>
     (active.value?.spendingEntries ?? []).reduce((t, e) => t + (Number(e.cost) || 0), 0)
@@ -15,8 +16,19 @@ export function usePeriodTotals() {
 
   const fixedTotal = computed(() => bills.value + subscriptions.value + savings.value + debts.value)
   const inAccount = computed(() => Number(active.value?.inAccount) || 0)
-  const leftToBudget = computed(() => inAccount.value - fixedTotal.value)
-  const leftToSpend = computed(() => leftToBudget.value - spending.value)
+
+  const budgetedFixed = computed(() =>
+    sumBudgeted(active.value?.bills ?? []) +
+    sumBudgeted(active.value?.subscriptions ?? []) +
+    sumBudgeted(active.value?.savings ?? []) +
+    sumBudgeted(active.value?.debts ?? [])
+  )
+  const spendingBudget = computed(() =>
+    (active.value?.spendingCategories ?? []).reduce((t, c) => t + (Number(c.budgeted) || 0), 0)
+  )
+
+  const leftToBudget = computed(() => inAccount.value - budgetedFixed.value - spendingBudget.value)
+  const leftToSpend = computed(() => inAccount.value - fixedTotal.value - spending.value)
 
   function categoryActual(name: string): number {
     if (!active.value) return 0
